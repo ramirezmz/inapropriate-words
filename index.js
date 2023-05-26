@@ -21,9 +21,12 @@ class InappropriateWordsFilter {
      * @returns {number} 
      */
     count(text) {
-        const words = text.split(' ')
-        const badWords = words.filter(word => this.list.includes(word))
-        return badWords.length
+        const words = text.split(/\s+/)
+        const badWords = words.filter(word => {
+        const cleanedWord = word.replace(/[,\.]/g, '')
+        return this.list.includes(cleanedWord)
+    })
+  return badWords.length;
     }
 
     /**
@@ -33,13 +36,14 @@ class InappropriateWordsFilter {
      * @returns {string}
      */
     replace(text, replacement = '*') {
-        const words = text.split(' ');
+        const words = text.split(/\b/)
         const result = words.map(word => {
-            if(!this.list.includes(word)) return word
-            const asterisks = replacement.repeat(word.length);
-            return asterisks;
+        const cleanedWord = word.trim()
+        if (!this.list.includes(cleanedWord)) return word;
+        const asterisks = replacement.repeat(cleanedWord.length);
+        return asterisks;
         });
-        return result.join(' ');
+        return result.join('');
     }
 
     /*
