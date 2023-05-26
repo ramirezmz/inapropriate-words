@@ -1,6 +1,6 @@
 {
   "name": "inappropriate-words",
-  "version": "1.1.2",
+  "version": "1.1.0",
   "description": "A simple javascript library to detect inappropriate words in a string.",
   "main": "index.js",
   "scripts": {
