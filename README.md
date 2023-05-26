@@ -22,3 +22,7 @@ const filteredText = Filter.hasBadWords(text);
 
 console.log(filteredText); // Needs to return true
 ```
+
+## Contributing
+
+Send a pull request with your changes and tests!
