@@ -1,0 +1,33 @@
+const badList = [
+  "arrombado",
+  "buceta",
+  "cacete",
+  "caralho",
+  "chupar",
+  "foder",
+  "merda",
+  "puta",
+  "viado",
+  "piroca",
+  "porra",
+  "fudeu",
+  "cu",
+  "cuzão",
+  "vadia",
+  "vagabundo",
+  "xoxota",
+  "porra",
+  "mijar",
+  "corno",
+  "foda-se",
+  "bosta",
+  "pinto",
+  "puta que pariu",
+  "putaria",
+  "se foder",
+  "merda",
+  "filho da puta",
+  "rola"
+];
+
+module.exports = badList
