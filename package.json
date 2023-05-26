@@ -1,13 +1,13 @@
 {
   "name": "inappropriate-words",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple javascript library to detect inappropriate words in a string.",
   "main": "index.js",
   "scripts": {
     "test": "mocha --recursive 'src/*.spec.js'"
   },
   "keywords": [],
-  "author": "",
+  "author": "ramirezmz",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^8.41.0",
