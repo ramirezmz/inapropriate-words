@@ -5,7 +5,7 @@ const inappropriateWords = new InappropriateWordsFilter()
 
 const INAPROPRIATE_PHRASE = 'Neste texto temos algumas palavras que serão filtradas, merda é uma palavra inapropriada, neste caso, o filtro deve retornar true'
 describe('Filter()', () => {
-    describe('hasBadWords method', () => { 
+    describe('check method', () => { 
         it('should return true when match a inappropriate word', () => {
             const result = inappropriateWords.check(INAPROPRIATE_PHRASE)
             assert.strictEqual(result, true)
@@ -26,13 +26,13 @@ describe('Filter()', () => {
         })
         
     })
-     describe('countBadWords', () => { 
+     describe('count method', () => { 
         it('should return 1 when match a inappropriate word', () => {
             const result = inappropriateWords.count(INAPROPRIATE_PHRASE)
             assert.strictEqual(result, 1)
         })
     })
-    describe('replace', () => {
+    describe('replace method', () => {
         it('should return a text with asterisks when match a inappropriate word', () => {
             const result = inappropriateWords.replace(INAPROPRIATE_PHRASE)
             assert.strictEqual(result, 'Neste texto temos algumas palavras que serão filtradas, ***** é uma palavra inapropriada, neste caso, o filtro deve retornar true')
@@ -40,6 +40,31 @@ describe('Filter()', () => {
         it('should return a text with 0 symbols when match a inappropriate word', () => {
             const result = inappropriateWords.replace(INAPROPRIATE_PHRASE, '0')
             assert.strictEqual(result, 'Neste texto temos algumas palavras que serão filtradas, 00000 é uma palavra inapropriada, neste caso, o filtro deve retornar true')
+        })
+    })
+    describe('add method', () => {
+
+        it('should add a new word to the list', () => {
+            const word = 'palavra'
+            console.log(inappropriateWords.add(word))
+            assert.strictEqual(inappropriateWords.list.includes(word), true)
+        })
+        it('should view a message when add a new word to the list', () => {
+            const word = 'test'
+            const result = inappropriateWords.add(word)
+            assert.strictEqual(result, `The word ${word} was added to the list`)
+        })
+        it('should throw new Error when word is empty', () => {
+            const word = ''
+            assert.throws(() => inappropriateWords.add(word), Error('The argument must be a string'))
+        })
+        it('should throw new Error when word is not a string', () => {
+            const word = 123
+            assert.throws(() => inappropriateWords.add(word), Error('The argument must be a string'))
+        })
+        it('should throw new Error when word already exists', () => {
+            const word = 'merda'
+            assert.throws(() => inappropriateWords.add(word), Error('This word already exists'))
         })
     })
 })
