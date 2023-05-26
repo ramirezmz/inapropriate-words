@@ -1,6 +1,6 @@
-const list = require('./utils/list.js')
+const list = require('./src/utils/list.js')
 
-class Filter {
+class InappropriateWordsFilter {
     constructor() {
         this.list = list
     }
@@ -9,7 +9,7 @@ class Filter {
      * @param {string} text
      * @returns {boolean}
      */
-    hasBadWords(text) {
+    check(text) {
         if(!text) return false
         if(typeof text !== 'string') throw new Error('The argument must be a string')
         text.toLocaleLowerCase()
@@ -20,11 +20,28 @@ class Filter {
      * @param {string} text
      * @returns {number} 
      */
-    countBadWords(text) {
+    count(text) {
         const words = text.split(' ')
         const badWords = words.filter(word => this.list.includes(word))
         return badWords.length
     }
+
+    /**
+     * This method replaces bad words with asterisks, the default is '*'
+     * @param {string} text
+     * @param {string} replacement
+     * @returns {string}
+     */
+
+    replace(text, replacement = '*') {
+        const words = text.split(' ');
+        const result = words.map(word => {
+            if(!this.list.includes(word)) return word
+            const asterisks = replacement.repeat(word.length);
+            return asterisks;
+        });
+        return result.join(' ');
+    }
 }
 
-module.exports = Filter
+module.exports = InappropriateWordsFilter
