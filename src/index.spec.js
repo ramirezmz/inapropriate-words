@@ -15,6 +15,16 @@ describe('Filter()', () => {
             const result = filter.hasBadWords(text)
             assert.strictEqual(result, false)
         })
+        it('should return false when text is empty', () => {
+            const text = ''
+            const result = filter.hasBadWords(text)
+            assert.strictEqual(result, false)
+        })
+        it('should return throw new Error when text is not a string', () => {
+            const text = 123
+            assert.throws(() => filter.hasBadWords(text), Error('The argument must be a string'))
+        })
+        
      })
      describe('countBadWords', () => { 
         it('should return 1 when match a inappropriate word', () => {

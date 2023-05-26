@@ -6,6 +6,9 @@ class Filter {
     }
 
     hasBadWords(text) {
+        if(!text) return false
+        if(typeof text !== 'string') throw new Error('The argument must be a string')
+        text.toLocaleLowerCase()
         return this.list.some(word => text.includes(word))
     }
     countBadWords(text) {
