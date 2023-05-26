@@ -1,6 +1,14 @@
 # Inappropriate Words
 
 A simple javascript library to detect inappropriate words in a string.
+Til now I only have a list of following languages:
+
+- [x] English
+- [x] Portuguese
+- [x] Spanish
+- [x] French
+- [x] German
+- [x] Italian
 
 ## Usage
 
