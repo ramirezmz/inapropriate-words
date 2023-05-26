@@ -31,6 +31,11 @@ describe('Filter()', () => {
             const result = inappropriateWords.count(INAPROPRIATE_PHRASE)
             assert.strictEqual(result, 1)
         })
+        it('should return 3 when match 3 inappropriate words', () => {
+            const word = 'olá, merda, tudo bem?, merda, bosta, testando'
+            const result = inappropriateWords.count(word)
+            assert.strictEqual(result, 3)
+        })
     })
     describe('replace method', () => {
         it('should return a text with asterisks when match a inappropriate word', () => {
@@ -40,6 +45,11 @@ describe('Filter()', () => {
         it('should return a text with 0 symbols when match a inappropriate word', () => {
             const result = inappropriateWords.replace(INAPROPRIATE_PHRASE, '0')
             assert.strictEqual(result, 'Neste texto temos algumas palavras que serão filtradas, 00000 é uma palavra inapropriada, neste caso, o filtro deve retornar true')
+        })
+        it('should return a text with astericks and ... when match a inappropriate word', () => {
+            const text = 'Testando, merda... bosta, testando'
+            const result = inappropriateWords.replace(text)
+            assert.strictEqual(result, 'Testando, *****... *****, testando')
         })
     })
     describe('add method', () => {
