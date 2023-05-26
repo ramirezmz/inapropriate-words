@@ -26,7 +26,7 @@ const Filter = new InappropriateWords();
 
 const text = 'Neste texto temos algumas palavras que serão filtradas, merda é uma palavra inapropriada.'
 
-const filteredText = Filter.hasBadWords(text);
+const filteredText = Filter.check(text);
 
 console.log(filteredText); // Needs to return true
 ```
