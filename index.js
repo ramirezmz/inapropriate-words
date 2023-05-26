@@ -32,7 +32,6 @@ class InappropriateWordsFilter {
      * @param {string} replacement
      * @returns {string}
      */
-
     replace(text, replacement = '*') {
         const words = text.split(' ');
         const result = words.map(word => {
@@ -41,6 +40,19 @@ class InappropriateWordsFilter {
             return asterisks;
         });
         return result.join(' ');
+    }
+
+    /*
+    * This method adds a new inappropriate word to the list
+    * @param {string} word
+    * @returns {string} The word {word} was added to the list
+    */
+    add(word) {
+        if(!word) throw new Error('The argument must be a string')
+        if(typeof word !== 'string') throw new Error('The argument must be a string')
+        if(this.list.includes(word)) throw new Error('This word already exists')
+        this.list.push(word)
+        return `The word ${word} was added to the list`
     }
 }
 
